@@ -1,0 +1,13 @@
+
+CQRS tasarýmý ile MediatR kütüphanesini kullandýðým WebAPI projesidir.
+Programlama Dilleri ve teknolojilerinin bulunduðu bir uygulamadýr.
+
+1.AÞAMA
+Proje klasör yapýsý oluþturuldu.
+Solution Folder'dan "corePackges" klasörü oluþturuldu. Her projede kullanýlan bu kýsým EnginDemirog'un "devarchitecture" sitesinden hazýr olarak alýndý//githubDan
+DevsProject ksýmýnda da projenin katmanlarý oluþturuldu.
+
+2.AÞAMA
+Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodlarý yazýldý.
+Ýsimler tekrar edemez.
+Programlama dili boþ geçilemez.
