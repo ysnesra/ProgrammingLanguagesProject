@@ -1,13 +1,26 @@
 
 CQRS tasarýmý ile MediatR kütüphanesini kullandýðým WebAPI projesidir.
+DDD(Domain Dream Development) Tekniði ile Onion Architecture mimarisi kullanýlmýþtýr
+
 Programlama Dilleri ve teknolojilerinin bulunduðu bir uygulamadýr.
 
 1.AÞAMA
 Proje klasör yapýsý oluþturuldu.
 Solution Folder'dan "corePackges" klasörü oluþturuldu. Her projede kullanýlan bu kýsým EnginDemirog'un "devarchitecture" sitesinden hazýr olarak alýndý//githubDan
-DevsProject ksýmýnda da projenin katmanlarý oluþturuldu.
+DevsProject ksýmýnda da projenin katmanlarý oluþturuldu.Klasör yapýlandýrmalarý yapýldý.
 
 2.AÞAMA
-Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodlarý yazýldý.
-Ýsimler tekrar edemez.
-Programlama dili boþ geçilemez.
+Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodlar yazýldý.
+  Ýsimler tekrar edemez.
+  Programlama dili boþ geçilemez.
+
+  *Language -> Domain entitysi oluþturuldu.
+  *Persistence -> BaseDbContext.cs oluþturuldu.
+  *Application -> ILanguageRepository.cs oluþturuldu. Soyut sýnýflar Application katmanýnda
+  *Persistence -> LanguageRepository.cs oluþturuldu. Repositoryler(CRUD iþlemleri) Persistence katmanýnda
+  *Bütün katmanlar kendi Registirationlarýný (injectionlarýný) kendi halletsin mantýðý ile:
+   PersistenceServiceRegistration.cs
+   ApplicationServiceRegistration.cs oluþturuldu.Bu servisleri program.cs'ye de ekledim.
+  *Veritabaný baðlantýsý için appsettings'e ConnectionString yazýldý
+
+  *CodeFirst yapýsý ile migration yapýlarak ProgrammingLanguagesDb databasei oluþturuldu

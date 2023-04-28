@@ -10,5 +10,9 @@
     <ProjectReference Include="..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+
 
 </Project>
