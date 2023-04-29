@@ -20,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Folder Include="Features\Languages\Constants\" />
+    <Folder Include="Features\Languages\Models\" />
+    <Folder Include="Features\Languages\Queries\" />
   </ItemGroup>
 
 </Project>

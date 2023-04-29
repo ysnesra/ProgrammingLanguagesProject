@@ -4,16 +4,16 @@ DDD(Domain Dream Development) Tekniði ile Onion Architecture mimarisi kullanýlmý
 
 Programlama Dilleri ve teknolojilerinin bulunduðu bir uygulamadýr.
 
-1.AÞAMA
-Proje klasör yapýsý oluþturuldu.
-Solution Folder'dan "corePackges" klasörü oluþturuldu. Her projede kullanýlan bu kýsým EnginDemirog'un "devarchitecture" sitesinden hazýr olarak alýndý//githubDan
-DevsProject ksýmýnda da projenin katmanlarý oluþturuldu.Klasör yapýlandýrmalarý yapýldý.
-
-2.AÞAMA
 Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodlar yazýldý.
   Ýsimler tekrar edemez.
   Programlama dili boþ geçilemez.
 
+1.AÞAMA
+  Proje klasör yapýsý oluþturuldu.
+  Solution Folder'dan "corePackges" klasörü oluþturuldu. Her projede kullanýlan bu kýsým EnginDemirog'un "devarchitecture" sitesinden hazýr olarak alýndý//githubDan
+  DevsProject ksýmýnda da projenin katmanlarý oluþturuldu.Klasör yapýlandýrmalarý yapýldý.
+
+2.AÞAMA
   *Language -> Domain entitysi oluþturuldu.
   *Persistence -> BaseDbContext.cs oluþturuldu.
   *Application -> ILanguageRepository.cs oluþturuldu. Soyut sýnýflar Application katmanýnda
@@ -22,5 +22,17 @@ Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebile
    PersistenceServiceRegistration.cs
    ApplicationServiceRegistration.cs oluþturuldu.Bu servisleri program.cs'ye de ekledim.
   *Veritabaný baðlantýsý için appsettings'e ConnectionString yazýldý
+  *CodeFirst yapýsý ile migration yapýlarak ProgrammingLanguagesDb databasei oluþturuldu.
 
-  *CodeFirst yapýsý ile migration yapýlarak ProgrammingLanguagesDb databasei oluþturuldu
+3.AÞAMA
+  Application katmanýnda Features klasöründe -> Command ve Query operasyonlarý ayrýldý. 
+  Command kýsmý kodlandý.
+    *Application katmanýna -> AutoMapper ve MediatR kütüphaneleri eklendi.
+    *CreateLanguageCommand.cs clasý oluþturuldu.MediatR handle iþleminin gerçekleþtiði class
+    *MappingProfiles.cs clasýnda neyi neyle mapleyeceði yazýldý
+ 
+  Bütün Contollerlar da MediatR kullanýlacaðýndan; BaseController oluþturulup diðer Controllerlara kalýtým verildi.
+  BusinessRules Kýsmý:
+    *LanguageBusinessRules.cs clasýnda "Ýsimler tekrar edemez" ve "Programlama dili boþ geçilemez" kurallarý yazýldý.
+     Command kýsmýna kuralýmýz eklendi.
+     ApplicationServiceRegistration.cs ye LanguageBusinessRules eklendi. 

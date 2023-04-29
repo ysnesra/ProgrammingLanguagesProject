@@ -33,8 +33,7 @@ namespace Persistence.Contexts
             {
                 a.ToTable("Languages").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
-                a.Property(p => p.Name).HasColumnName("Name");
-                a.Property(p => p.CreateDate).HasColumnName("CreateDate");
+                a.Property(p => p.Name).HasColumnName("Name");               
             });
 
 
