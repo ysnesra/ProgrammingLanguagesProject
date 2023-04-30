@@ -12,10 +12,16 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Languages.Commands.CreateLanguage
 {
+    /// <summary>
+    /// Programlama Dili eklemek için kullanılan komut sınıfıdır.
+    /// </summary>
     public class CreateLanguageCommand: IRequest<CreatedLanguageDto>
     {
         public string Name { get; set; }
 
+        /// <summary>
+        /// Programlama Dili eklemek için kullanılan işleyici sınıfıdır.
+        /// </summary>
         public class CreateLanguageCommandHandler : IRequestHandler<CreateLanguageCommand, CreatedLanguageDto>
         {
             private readonly ILanguageRepository _languageRepository;

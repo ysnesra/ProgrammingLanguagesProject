@@ -13,11 +13,17 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Languages.Commands.UpdateLanguage
 {
+    /// <summary>
+    /// Programlama Dili güncellemek için kullanılan komut sınıfıdır.
+    /// </summary>
     public class UpdateLanguageCommand : IRequest<UpdatedLanguageDto>
     {
         public int Id { get; set; } 
         public string Name { get; set; }
 
+        /// <summary>
+        /// Programlama Dili güncellemek için kullanılan işleyici sınıfıdır.
+        /// </summary>
         public class UpdateLanguageCommandHandler : IRequestHandler<UpdateLanguageCommand, UpdatedLanguageDto>
         {
             private readonly ILanguageRepository _languageRepository;
@@ -35,7 +41,7 @@ namespace Application.Features.Languages.Commands.UpdateLanguage
             {
                 //BusinessRules               
                 Language? language = await _languageRepository.GetAsync(x => x.Id == request.Id);
-                await _languageBusinessRules.LanguageShouldExistWhenRequested(language);
+                _languageBusinessRules.LanguageShouldExistWhenRequested(language);
 
                 await _languageBusinessRules.LanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 

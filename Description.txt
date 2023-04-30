@@ -36,3 +36,12 @@ Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebile
     *LanguageBusinessRules.cs clasýnda "Ýsimler tekrar edemez" ve "Programlama dili boþ geçilemez" kurallarý yazýldý.
      Command kýsmýna kuralýmýz eklendi.
      ApplicationServiceRegistration.cs ye LanguageBusinessRules eklendi. 
+
+4.AÞAMA
+   Query kýsmý kodlandý.
+     *GetListLanguageQuery.cs clasý oluþturuldu.
+     *Controllerda GetList metotuyla MediatR a  GetlistLanguageQuery yollandý
+
+   Fluent Validation uygulandý.
+   Eklerken,güncellerken programlamadili ismi boþ olmamalý ve en az iki karakter olmalýdýr.(CreateLanguageCommandValidator.cs ve UpdateLanguageCommandValidator.cs)
+   GetById ye göre tek bir data getirirkende geçersiz Id girme ihtimalinde karþý validation yazýldý (GetByIdLanguageQueryValidator.cs)

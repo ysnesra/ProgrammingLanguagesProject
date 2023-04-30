@@ -19,7 +19,7 @@ namespace Application.Features.Languages.Rules
             _languageRepository = languageRepository;
         }
 
-        //ProgramlamaDili ismi tekrar edemez.)
+        //ProgramlamaDili ismi tekrar edemez
         public async Task LanguageNameCanNotBeDuplicatedWhenInserted(string name)
         {
             //Kuraldan geçiyorsa hiç birşey döndermiyor  //Kuraldan geçmiyorsa hata fırlatıyor
@@ -27,14 +27,14 @@ namespace Application.Features.Languages.Rules
 
             IPaginate<Language> result = await _languageRepository.GetListAsync(b => b.Name == name);
             if (result.Items.Any()) 
-                 throw new BusinessException("Bu Programlama dili bulunmaktadır");
+                 throw new BusinessException("Bu Programlama dili bulunmaktadır.Programlamadili adı tekrar edemez");
         }
 
-        //Programlama dili boş geçilemez
+        //Programlama dili varlığının boş olup olmadığını kontrol eder
         //Null Check      
-        public async Task LanguageShouldExistWhenRequested(Language language)
+        public void LanguageShouldExistWhenRequested(Language language)
         {
-            if (language == null)
+            if (language is null)
                 throw new BusinessException("İstenen Programlama dili mevcut değil");
         }
     }
