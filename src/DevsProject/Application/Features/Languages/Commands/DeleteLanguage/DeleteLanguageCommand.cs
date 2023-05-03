@@ -39,7 +39,7 @@ namespace Application.Features.Languages.Commands.DeleteLanguage
             public async Task<DeletedLanguageDto> Handle(DeleteLanguageCommand request, CancellationToken cancellationToken)
             {
                 //BusinessRules
-                Language? language = await _languageRepository.GetAsync(x => x.Name == request.Name);
+                Language? language = await _languageRepository.GetAsync(x => x.Name.ToLower() == request.Name.ToLower());
 
                 _languageBusinessRules.LanguageShouldExistWhenRequested(language);
 

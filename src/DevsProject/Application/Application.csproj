@@ -20,7 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\GithubAddresses\Commands\" />
+    <Folder Include="Features\GithubAddresses\Constants\" />
+    <Folder Include="Features\GithubAddresses\Dtos\" />
+    <Folder Include="Features\GithubAddresses\Models\" />
+    <Folder Include="Features\GithubAddresses\Rules\" />
+    <Folder Include="Features\GithubAddresses\Queries\" />
+    <Folder Include="Features\GithubAddresses\Profiles\" />
     <Folder Include="Features\Languages\Constants\" />
+    <Folder Include="Features\Technologies\Constants\" />
   </ItemGroup>
 
 </Project>

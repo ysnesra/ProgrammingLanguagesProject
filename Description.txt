@@ -4,6 +4,7 @@ DDD(Domain Dream Development) Tekniði ile Onion Architecture mimarisi kullanýlmý
 
 Programlama Dilleri ve teknolojilerinin bulunduðu bir uygulamadýr.
 
+*******************************************************************************
 Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodlar yazýldý.
   Ýsimler tekrar edemez.
   Programlama dili boþ geçilemez.
@@ -43,5 +44,22 @@ Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebile
      *Controllerda GetList metotuyla MediatR a  GetlistLanguageQuery yollandý
 
    Fluent Validation uygulandý.
-   Eklerken,güncellerken programlamadili ismi boþ olmamalý ve en az iki karakter olmalýdýr.(CreateLanguageCommandValidator.cs ve UpdateLanguageCommandValidator.cs)
+   Eklerken,güncellerken,silerken programlamadili ismi boþ olmamalý ve en az iki karakter olmalýdýr.(CreateLanguageCommandValidator.cs, UpdateLanguageCommandValidator.cs, DeleteLanguageCommandValidator)
    GetById ye göre tek bir data getirirkende geçersiz Id girme ihtimalinde karþý validation yazýldý (GetByIdLanguageQueryValidator.cs)
+
+   *******************************************************************************
+Sisteme programlama dillerine ait teknolojiler eklenebilmeli, silinebilmeli. güncellenebilmeli, listelenebilmelidir. Örneðin; Java : Spring, JSP. C#: WPF, ASP.NET , JavaScript : Vue, React
+  
+  1.AÞAMA
+    *Technologies -> Domain entitysi oluþturuldu.
+     Language(1)-Technologies(N) iliþkisi verilip migration yapýldý
+
+  2.AÞAMA
+    *Technologies Add -> CreateTechnologyCommand ile kullanýcý hangi Language ismine Technology ekleyecekse girer ve Technology tablosuna eklenir(LanguageId'siyle eklenir) 
+    *Technologies Update -> UpdateTechnologyCommand ile kullanýcý hangi teknolojiyi güncelleyecekse Idsini ve LanguageId sini girer bunlar doðru ise Name ismini deðiþtirebilir 
+    *Technologies Delete -> DeleteTechnologyCommand ile kullanýcý hangi teknolojiyi silecekse Name ni girer ve silinir
+    *Fluent Validation uygulandý.Eklerken,Güncellerken,Silerken ve GetById ile tek bir data getirirken Id ve Name alanlarý kontrol edildi
+
+    *Technologies GetList -> GetListTechnologyQuery ile Language isimleriyle birlikte listelendi 
+    *Technologies GetListById -> GetListByIdTechnologyQuery ile Language isimiyle birlikte tek bir teknolojiyi getirir.Handle ederken Include ile tablolarý Joinledim.Mapping yaparkende LanguageName ismini git Language tablosundan alýp eþleþtir diyorum 
+    Technologies GetListByDynamic -> GetListTechnologyByDynamicQuery ile verileri dinamik filtre yaparak getirir

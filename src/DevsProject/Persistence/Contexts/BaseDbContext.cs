@@ -13,6 +13,7 @@ namespace Persistence.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Technology> Technologies { get; set; }
 
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
@@ -33,14 +34,27 @@ namespace Persistence.Contexts
             {
                 a.ToTable("Languages").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
-                a.Property(p => p.Name).HasColumnName("Name");               
+                a.Property(p => p.Name).HasColumnName("Name");
+                a.HasMany(p => p.Technologies);
+            });
+
+            modelBuilder.Entity<Technology>(a =>
+            {
+                a.ToTable("Technologies").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.LanguageId).HasColumnName("LanguageId");
+                a.Property(p => p.Name).HasColumnName("Name");              
+                //a.HasOne(p=>p.Language); sadece HasMAny eklemek yeterli
             });
 
 
             //Seed Data
             //Migrate edince bir iki tane Test datası oluştur.Başlangıçta oluşacak datalar 
-            Language[] LanguageEntitySeeds = { new(1, "C#"), new(2, "Java") };
-            modelBuilder.Entity<Language>().HasData(LanguageEntitySeeds);
+            Language[] languageEntitySeeds = { new(1, "C#"), new(2, "Java") };
+            modelBuilder.Entity<Language>().HasData(languageEntitySeeds);
+
+            Technology[] technologiesEntitySeeds = { new(1, 1, "ASP.NET"), new(2, 1, "WPF"), new(3, 6, "Spring") }; 
+            modelBuilder.Entity<Technology>().HasData(technologiesEntitySeeds); 
 
 
         }

@@ -13,6 +13,7 @@ namespace Application.Features.Languages.Commands.CreateLanguage
         {
             RuleFor(c => c.Name).NotEmpty().NotNull().WithMessage("Programlama ismi boş geçilemez");
             RuleFor(c => c.Name).MinimumLength(2);
+
         }
     }
 }
