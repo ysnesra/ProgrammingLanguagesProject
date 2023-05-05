@@ -25,5 +25,6 @@ Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebil
 -   _Teknolojilerİçin Business Rules İşlemi Yapıldı_
 -   _Teknolojiler İçin Validation İşlemi Yapıldı._
 -   _Query kısmı kodlandı._
-*-Bütün bu işlemler Language(1)-Technology(N) tabloları Joinlenerek;
-  Teknolojilere ait Dil varlığı ve Dile ait Teknolojiler getirilerek gerçekleştirildi.*
+
+Bütün bu işlemler Language(1)-Technology(N) tabloları Joinlenerek;
+  Teknolojilere ait Dil varlığı ve Dile ait Teknolojiler getirilerek gerçekleştirildi.
