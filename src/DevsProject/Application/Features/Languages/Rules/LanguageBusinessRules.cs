@@ -37,5 +37,14 @@ namespace Application.Features.Languages.Rules
             if (language is null)
                 throw new BusinessException("İstenen Programlama dili mevcut değil");
         }
+
+        //Programlama dili varlığını Id ye göre kontrol eder
+        //Null Check 
+        public async Task LanguageIdShouldBeExist(int id)
+        {
+            var result = await _languageRepository.GetListAsync(x => x.Id == id);
+            if (!result.Items.Any())
+                throw new BusinessException("Bu programlama dili Id si bulunmamaktadır");
+        }
     }
 }

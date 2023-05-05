@@ -18,7 +18,7 @@ namespace Application.Features.Languages.Commands.DeleteLanguage
     /// </summary>
     public class DeleteLanguageCommand : IRequest<DeletedLanguageDto>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Programlama Dili silmek için kullanılan işleyici sınıfıdır.
@@ -39,9 +39,8 @@ namespace Application.Features.Languages.Commands.DeleteLanguage
             public async Task<DeletedLanguageDto> Handle(DeleteLanguageCommand request, CancellationToken cancellationToken)
             {
                 //BusinessRules
-                Language? language = await _languageRepository.GetAsync(x => x.Name.ToLower() == request.Name.ToLower());
-
-                _languageBusinessRules.LanguageShouldExistWhenRequested(language);
+                await _languageBusinessRules.LanguageIdShouldBeExist(request.Id);
+                Language? language = await _languageRepository.GetAsync(x => x.Id==request.Id);            
 
                 Language deletedLanguage= await _languageRepository.DeleteAsync(language);
                 DeletedLanguageDto deletedLanguageDto = _mapper.Map<DeletedLanguageDto>(deletedLanguage);

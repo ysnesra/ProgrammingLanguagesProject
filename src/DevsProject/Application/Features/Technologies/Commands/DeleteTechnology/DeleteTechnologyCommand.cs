@@ -20,7 +20,7 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
     /// </summary>
     public class DeleteTechnologyCommand : IRequest<DeletedTechnologyDto>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Teknolojiyi silmek için kullanılan işleyici sınıfıdır.
@@ -40,7 +40,7 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
 
             public async Task<DeletedTechnologyDto> Handle(DeleteTechnologyCommand request, CancellationToken cancellationToken)
             {
-                Technology? technology= await _technologyRepository.GetAsync(x=>x.Name.ToLower()==request.Name.ToLower());
+                Technology? technology= await _technologyRepository.GetAsync(x=>x.Id==request.Id);
                 _technologyBusinessRules.TechnologyShouldExistWhenRequested(technology);
 
                 Technology deletedTechnology = await _technologyRepository.DeleteAsync(technology);

@@ -30,16 +30,7 @@ namespace Application.Features.Technologies.Rules
             if (language is null)
                 throw new BusinessException("İstenen Programlama dili mevcut değil");
         }
-        //Programlama dilini isminden olup olmadığını kontrol eder
-        //Null Check
-        public async Task LanguageNameMustExit(string languageName)
-        {
-            Language language = await _languageRepository.GetAsync(x => x.Name == languageName);
-            if (language is null)
-                throw new BusinessException("İstenen Programlama dili mevcut değil");
-        }
-        
-
+   
         //Teknoloji ismi tekrar edemez
         public async Task TechnologyNameCanNotBeDuplicated(string name)
         {

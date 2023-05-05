@@ -5,7 +5,9 @@ using Application.Features.Languages.Dtos;
 using Application.Features.Languages.Models;
 using Application.Features.Languages.Queries.GetByIdLanguage;
 using Application.Features.Languages.Queries.GetListLanguage;
+using Application.Features.Languages.Queries.GetListLanguageByDynamic;
 using Core.Application.Requests;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -53,6 +55,18 @@ namespace WebAPI.Controllers
         {
             LanguageGetByIdDto languageGetById = await Mediator.Send(getByIdLanguageQuery);
             return Ok(languageGetById);
+        }
+
+        [HttpPost("GetList/ByDynamic")]
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic )
+        {
+            GetListLanguageByDynamicQuery getListLanguageByDynamicQuery = new()
+            {
+                PageRequest = pageRequest,
+                Dynamic = dynamic
+            };
+            LanguageListModel result = await Mediator.Send(getListLanguageByDynamicQuery);
+            return Ok(result);
         }
     }
 }

@@ -39,8 +39,8 @@ namespace WebAPI.Controllers
             return Created("", result);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] DeleteTechnologyCommand deleteTechnologyCommand)
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteTechnologyCommand deleteTechnologyCommand)
         {
             DeletedTechnologyDto result = await Mediator.Send(deleteTechnologyCommand);
             return Created("", result);

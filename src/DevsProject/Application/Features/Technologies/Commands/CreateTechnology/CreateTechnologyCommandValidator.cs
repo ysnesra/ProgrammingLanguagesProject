@@ -15,8 +15,8 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
             RuleFor(c => c.Name).NotEmpty().NotNull().WithMessage("Teknoloji ismi boş geçilemez");
             RuleFor(c => c.Name).MinimumLength(2);
 
-            RuleFor(c => c.LanguageName).NotEmpty().NotNull().WithMessage("Programlama ismi boş geçilemez");
-            RuleFor(c => c.LanguageName).MinimumLength(2);
+            RuleFor(c => c.LanguageId).NotEmpty().NotNull().WithMessage("Programlama Id si boş geçilemez");
+            RuleFor(c => c.LanguageId).GreaterThan(0).WithMessage("Programşama Id si negatif olamaz");
 
         }
     }

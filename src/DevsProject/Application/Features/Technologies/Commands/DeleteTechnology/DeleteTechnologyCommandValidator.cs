@@ -12,7 +12,8 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
     {
         public DeleteTechnologyCommandValidator()
         {
-           RuleFor(c => c.Name).NotEmpty().NotNull().WithMessage("Teknoloji ismi boşsa silinmez");
+           RuleFor(c => c.Id).NotEmpty().NotNull().WithMessage("Teknoloji Id si boşsa silinmez");
+            RuleFor(d => d.Id).GreaterThan(0).WithMessage("Tenoloji Id si negatif olmaz");
         }
     }
 }

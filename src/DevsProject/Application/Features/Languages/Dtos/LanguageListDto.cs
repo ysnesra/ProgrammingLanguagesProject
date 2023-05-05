@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Features.Technologies.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace Application.Features.Languages.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<TechnologyListDto> Technologies { get; set; }
     }
 }

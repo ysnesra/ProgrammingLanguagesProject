@@ -7,6 +7,7 @@ using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace Application.Features.Languages.Queries.GetByIdLanguage
 
             public async Task<LanguageGetByIdDto> Handle(GetByIdLanguageQuery request, CancellationToken cancellationToken)
             {
-                Language? language= await _languageRepository.GetAsync(x => x.Id == request.Id);
+                Language? language= await _languageRepository.Query().Include(x=>x.Technologies).FirstOrDefaultAsync(x => x.Id == request.Id);
 
                 //Programlama dilinin olup olmadığını kontrol eden iş kuralı
                 _languageBusinessRules.LanguageShouldExistWhenRequested(language);  

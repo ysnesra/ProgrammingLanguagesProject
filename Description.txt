@@ -11,7 +11,7 @@ Programlama dillerini(C#,Java,Python) ekleyebilecek, silebilecek, güncelleyebile
 
 1.AÞAMA
   Proje klasör yapýsý oluþturuldu.
-  Solution Folder'dan "corePackges" klasörü oluþturuldu. Her projede kullanýlan bu kýsým EnginDemirog'un "devarchitecture" sitesinden hazýr olarak alýndý//githubDan
+  Solution Folder'dan "corePackges" klasörü oluþturuldu.Bu Mimari kýsmý EnginDemirog'un "devarchitecture" sitesinden(githubDan) hazýr olarak alýndý
   DevsProject ksýmýnda da projenin katmanlarý oluþturuldu.Klasör yapýlandýrmalarý yapýldý.
 
 2.AÞAMA
@@ -57,9 +57,11 @@ Sisteme programlama dillerine ait teknolojiler eklenebilmeli, silinebilmeli. gün
   2.AÞAMA
     *Technologies Add -> CreateTechnologyCommand ile kullanýcý hangi Language ismine Technology ekleyecekse girer ve Technology tablosuna eklenir(LanguageId'siyle eklenir) 
     *Technologies Update -> UpdateTechnologyCommand ile kullanýcý hangi teknolojiyi güncelleyecekse Idsini ve LanguageId sini girer bunlar doðru ise Name ismini deðiþtirebilir 
-    *Technologies Delete -> DeleteTechnologyCommand ile kullanýcý hangi teknolojiyi silecekse Name ni girer ve silinir
+    *Technologies Delete -> DeleteTechnologyCommand ile kullanýcý hangi teknolojiyi silecekse Id sini girer ve silinir
     *Fluent Validation uygulandý.Eklerken,Güncellerken,Silerken ve GetById ile tek bir data getirirken Id ve Name alanlarý kontrol edildi
 
     *Technologies GetList -> GetListTechnologyQuery ile Language isimleriyle birlikte listelendi 
-    *Technologies GetListById -> GetListByIdTechnologyQuery ile Language isimiyle birlikte tek bir teknolojiyi getirir.Handle ederken Include ile tablolarý Joinledim.Mapping yaparkende LanguageName ismini git Language tablosundan alýp eþleþtir diyorum 
-    Technologies GetListByDynamic -> GetListTechnologyByDynamicQuery ile verileri dinamik filtre yaparak getirir
+    *Technologies GetListById -> GetListByIdTechnologyQuery ile Language isimiyle birlikte tek bir teknolojiyi getirir.
+       Handle ederken Include ile tablolarý Joinledim.
+       Mapping yaparkende LanguageName ismini git Language tablosundan alýp eþleþtir diyorum 
+    *Technologies GetListByDynamic -> GetListTechnologyByDynamicQuery ile verileri dinamik filtre yaparak getirir

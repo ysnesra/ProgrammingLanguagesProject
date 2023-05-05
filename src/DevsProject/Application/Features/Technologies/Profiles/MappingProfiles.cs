@@ -26,11 +26,13 @@ namespace Application.Features.Technologies.Profiles
             CreateMap<Technology, UpdatedTechnologyDto>().ReverseMap();          
 
             CreateMap<Technology, DeletedTechnologyDto>().ReverseMap();
-          
+
+            CreateMap<IPaginate<Technology>, TechnologyListModel>().ReverseMap();
             CreateMap<Technology, TechnologyListDto>()
                 .ForMember(c=>c.LanguageName,opt=>opt.MapFrom(c=>c.Language.Name))
                 .ReverseMap();
-            CreateMap<IPaginate<Technology>, TechnologyListModel>().ReverseMap();
+
+            CreateMap<Technology, TechnologyListDto>().ReverseMap();
 
             CreateMap<Technology, TechnologyGetByIdDto>()
                 .ForMember(c => c.LanguageName, opt => opt.MapFrom(c => c.Language.Name))

@@ -21,22 +21,20 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
     public class CreateTechnologyCommand : IRequest<CreatedTechnologyDto>
     {
         public string Name { get; set; }
-        public string LanguageName { get; set; }
+        public int LanguageId { get; set; }
 
         /// <summary>
         /// Teknoloji eklemek için kullanılan işleyici sınıfıdır.
         /// </summary>
         public class CreateTechnologyCommandHandler : IRequestHandler<CreateTechnologyCommand, CreatedTechnologyDto>
         {
-            private readonly ITechnologyRepository _technologyRepository;
-            private readonly ILanguageRepository _languageRepository;
+            private readonly ITechnologyRepository _technologyRepository;           
             private readonly IMapper _mapper;
             private readonly TechnologyBusinessRules _technologyBusinessRules;
 
-            public CreateTechnologyCommandHandler(ITechnologyRepository technologyRepository, IMapper mapper, TechnologyBusinessRules technologyBusinessRules,ILanguageRepository languageRepository)
+            public CreateTechnologyCommandHandler(ITechnologyRepository technologyRepository, IMapper mapper, TechnologyBusinessRules technologyBusinessRules)
             {
-                _technologyRepository = technologyRepository;
-                _languageRepository = languageRepository;
+                _technologyRepository = technologyRepository;               
                 _mapper = mapper;
                 _technologyBusinessRules = technologyBusinessRules;
             }
@@ -44,12 +42,12 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
             public async Task<CreatedTechnologyDto> Handle(CreateTechnologyCommand request, CancellationToken cancellationToken)
             {
                 await _technologyBusinessRules.TechnologyNameCanNotBeDuplicated(request.Name);
-                await _technologyBusinessRules.LanguageNameMustExit(request.LanguageName);
+                await _technologyBusinessRules.LanguageMustExit(request.LanguageId);
 
-                Language language = await _languageRepository.GetAsync(x => x.Name == request.LanguageName);
+               
 
                 Technology mappedTechnology = _mapper.Map<Technology>(request);
-                mappedTechnology.LanguageId = language.Id;
+         
                 Technology createdTechnology = await _technologyRepository.AddAsync(mappedTechnology);
                 CreatedTechnologyDto createdTechnologyDto = _mapper.Map<CreatedTechnologyDto>(createdTechnology);
 

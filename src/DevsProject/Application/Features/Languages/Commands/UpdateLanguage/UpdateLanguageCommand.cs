@@ -39,14 +39,15 @@ namespace Application.Features.Languages.Commands.UpdateLanguage
 
             public async Task<UpdatedLanguageDto> Handle(UpdateLanguageCommand request, CancellationToken cancellationToken)
             {
-                //BusinessRules               
-                Language? language = await _languageRepository.GetAsync(x => x.Id == request.Id);
-                _languageBusinessRules.LanguageShouldExistWhenRequested(language);
-
+                //BusinessRules                             
+                await _languageBusinessRules.LanguageIdShouldBeExist(request.Id);
                 await _languageBusinessRules.LanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
+         
+                Language? language = _languageRepository.Get(x => x.Id == request.Id);
+             
+                language.Name = request.Name;
 
-                language.Name = request.Name;   
-                Language updatedLanguage= await _languageRepository.UpdateAsync(language);
+                Language updatedLanguage = await _languageRepository.UpdateAsync(language);
                 UpdatedLanguageDto updatedLanguageDto = _mapper.Map<UpdatedLanguageDto>(updatedLanguage);
 
                 return updatedLanguageDto;

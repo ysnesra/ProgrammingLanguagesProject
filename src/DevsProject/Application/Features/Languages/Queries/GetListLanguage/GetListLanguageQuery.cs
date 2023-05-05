@@ -5,6 +5,7 @@ using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,9 @@ namespace Application.Features.Languages.Queries.GetListLanguage
 
             public async Task<LanguageListModel> Handle(GetListLanguageQuery request, CancellationToken cancellationToken)
             {
-               IPaginate<Language> languages = await _languageRepository.GetListAsync(index: request.PageRequest.Page, size: request.PageRequest.PageSize);  
+               IPaginate<Language> languages = await _languageRepository.GetListAsync(
+                   include:m=>m.Include(x=>x.Technologies),
+                   index: request.PageRequest.Page, size: request.PageRequest.PageSize);  
                 
                 LanguageListModel mappedLanguageListModel = _mapper.Map<LanguageListModel>(languages);
 
