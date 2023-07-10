@@ -34,10 +34,11 @@ Bütün bu işlemler Language(1)-Technology(N) tabloları Joinlenerek;
   
 ![a1](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/69178d49-5acc-4156-9328-d8c40c027341)
 
+
 ![a2](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/43dc4354-f9cc-405b-b3a3-b3b8d0c85dda)
+
 
 ![a3](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/5ea84017-2365-4c02-b25b-28fbcfde9a64)
 
-![a4](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/da4f8fc3-2e63-4c30-b585-33b823479af3)
 
-![a5](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/df97058f-a481-4124-9b88-5a8526ba209d)
+|![a4](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/da4f8fc3-2e63-4c30-b585-33b823479af3)  |![a5](https://github.com/ysnesra/ProgrammingLanguagesProject/assets/104023688/df97058f-a481-4124-9b88-5a8526ba209d)  |
