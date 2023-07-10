@@ -15,11 +15,13 @@ using Application.Features.Technologies.Queries.GetListTechnology;
 using Application.Features.Technologies.Queries.GetListTechnologyByDynamic;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TechnologiesController : BaseController

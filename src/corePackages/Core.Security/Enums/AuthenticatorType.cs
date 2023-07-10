@@ -2,7 +2,7 @@
 
 public enum AuthenticatorType
 {
-    None = 0,
-    Email = 1,
-    Otp = 2
+    None = 0,   //Email-Password ile
+    Email = 1,  //Email platformu üzerinden
+    Otp = 2     //Otp platformu üzerinden
 }

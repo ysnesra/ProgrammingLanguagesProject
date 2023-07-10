@@ -63,5 +63,31 @@ Sisteme programlama dillerine ait teknolojiler eklenebilmeli, silinebilmeli. gün
     *Technologies GetList -> GetListTechnologyQuery ile Language isimleriyle birlikte listelendi 
     *Technologies GetListById -> GetListByIdTechnologyQuery ile Language isimiyle birlikte tek bir teknolojiyi getirir.
        Handle ederken Include ile tablolarý Joinledim.
-       Mapping yaparkende LanguageName ismini git Language tablosundan alýp eþleþtir diyorum 
+       Mapping yaparkende LanguageName ismini Language tablosundan alýp eþleþtiriyorum
     *Technologies GetListByDynamic -> GetListTechnologyByDynamicQuery ile verileri dinamik filtre yaparak getirir
+
+    
+   *******************************************************************************
+Core Packages altyapýsý kullanýlarak sisteme; 
+ - Kullanýcýlar Register olup, Login olabilmelidir. (JWT)
+ - Authentication yapýsý kuruldu.
+
+1*Core.Security'ye Kullanýcýlar entitiesi oluþturuldu:
+ User(N)- OperationClaim(N) olduðu için ->AraTablo oluþturuldu: User(1) -> UserOperationClaim(N) <- OperationClaim(1)
+ RefreshToken tablosuda oluþturuldu.Jwt nin süresi dolduðunda kullanýcýyý sistemden atmasýn diye oluþturduk.Token ýn süresini uzatmamýzý saðlar.Örneðin kullanýcý ödeme yaparken sistemden düþmesinin önüne geçmiþ oluruz.
+ BaseDbContext'e yeni tablolarýmýz implemente edilip, Migration yapýldý.  
+2*Authentication iþlemleri için Auths Feature'u oluþturuldu.
+  -RegisterCommand
+  -RegisterDto, RefreshTokenDto larý oluþturuldu. Command de dýþardan alýncak veriler Dto'dan gelir.
+  -Veritabanýna gitmek için Repositoryye ihtiyacým var -> IUserRepository,IRefreshTokenRepository ,IOperationClaimRepository,IUserOperationClaimRepository interfaceleri oluþturuldu.Bunlarýn Concreteleri de Persistence altýnda oluþturuldu.
+
+3*ÝþKuralý
+  Kullanýcý kayýt olduðunda ayný Email de kayýt varsa kontrolünü yapýp uyarý vermesi için;
+  AuthBusinessRules classý oluþturuldu.
+
+4*RegisterCommand -> hem veritabanýna kayýt iþlemlerini yapacak 
+                     hemde Jwt Token üretecek
+
+5*JwtToken üretme -> hem Register hemde Login olurken kullanýlacaðýndan Authentication iþlemleri için Servis oluþturuldu. ->Application-> AuthService-> IAuthService , AuthService
+
+6*IpAddress'i GetIpAddress()metotuyla oluþturuyorum.Bunuda Login ve Register olurken kullancaðým için BaseController içine yazdým.
